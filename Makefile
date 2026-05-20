@@ -2,9 +2,9 @@ CC = gcc
 
 TARGET = joke-fetcher
 
-SRC = src/main.c
+SRC := $(wildcard src/*.c)
 
-LINKER = -lcurl
+LINKER = -lcurl -lcjson
 
 CFLAGS = -Wall -Iinclude
 
