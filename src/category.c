@@ -5,7 +5,10 @@ char* return_category(void)
     int input;
     char *result = NULL;
     printf("Select a joke category:\n1 -> Any (default)\n2 -> Programming\n3 -> Misc\n4 -> Dark\n5 -> Pun\n6 -> Spooky\n7 -> Christmas\n: ");
-    scanf("%d", &input);
+    if (scanf("%d", &input) != 1)
+    {
+        printf("Invalid input");
+    }
     switch (input)
     {
         case 1: result = "Any"; break;
