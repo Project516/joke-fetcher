@@ -6,6 +6,9 @@
 int main(void) 
 {
 
+    char *joke = NULL;
+    int ret = 1;
+
     // setup curl
     CURL *curl;
     CURLcode res;
@@ -15,13 +18,16 @@ int main(void)
     if (!curl) 
     {
         fprintf(stderr, "Failed to create curl handle.\n");
-        return 1;
+        goto cleanup;
     }
 
     // url
     char url[256];
     const char *base = "https://v2.jokeapi.dev/joke/";
     const char *category = return_category();
+    if (category == NULL) {
+        goto cleanup;
+    }
     snprintf(url, sizeof(url), "%s%s", base, category);
 
     curl_easy_setopt(curl, CURLOPT_URL, url);
@@ -32,16 +38,23 @@ int main(void)
     if (res != CURLE_OK) 
     {
         fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+        goto cleanup;
     }
-    
-    //parse_and_print_joke(chunk.data);
-    
-    printf("%s\n", return_joke(chunk.data));
+        
+    joke = return_joke(chunk.data);
+    if (joke != NULL) {
+        printf("%s\n", joke);
+        free(joke);
+        ret = 0;
+    } else {
+        goto cleanup;
+    }
 
-    // Cleanup
-    curl_easy_cleanup(curl);
-    free(chunk.data);
-    curl_global_cleanup();
+    // curl cleanup
+    cleanup:
+        curl_easy_cleanup(curl);
+        free(chunk.data);
+        curl_global_cleanup();
 
-    return 0;
+        return ret;
 }

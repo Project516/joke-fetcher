@@ -1,14 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "category.h"
 
 char* return_category(void) 
 {
-    int input;
+    int input = 1;
     char *result = NULL;
     printf("Select a joke category:\n1 -> Any (default)\n2 -> Programming\n3 -> Misc\n4 -> Dark\n5 -> Pun\n6 -> Spooky\n7 -> Christmas\n: ");
     if (scanf("%d", &input) != 1)
     {
-        printf("Invalid input");
+        printf("Invalid input!\n");
+        return NULL;
     }
+
+    // different joke categories
     switch (input)
     {
         case 1: result = "Any"; break;

@@ -6,9 +6,11 @@ SRC := $(wildcard src/*.c)
 
 LINKER = -lcurl -lcjson
 
-CFLAGS = -Wall -Iinclude
+CFLAGS = -Wall -Iinclude -Wextra
 
 RELEASE = -O3 -s
+
+.PHONY: all clean release
 
 all:
 	$(CC) $(CFLAGS) $(SRC) $(LINKER) -o $(TARGET)
