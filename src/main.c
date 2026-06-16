@@ -3,9 +3,10 @@
 #include "utils.h"
 #include "category.h"
 
-int main(void) 
+int main(void)
 {
-
+    printf("WARNING: JOKES MAY BE OFFENSIVE (SORRY)\n\n");
+    
     char *joke = NULL;
     int ret = 1;
 
@@ -40,7 +41,7 @@ int main(void)
         fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
         goto cleanup;
     }
-        
+
     joke = return_joke(chunk.data);
     if (joke != NULL) {
         printf("%s\n", joke);
