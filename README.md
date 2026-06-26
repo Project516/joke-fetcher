@@ -50,3 +50,14 @@ There are 7 joke categories:
 Decide if you want to get offensive jokes (off by default).
 
 > [!WARNING] The API has some crazy offensive jokes. You have been warned.
+
+
+## Development
+
+### Scripts
+
+There are shell scripts included in the repository to speed up development.
+
+`apt-deps.sh`: Quick setup on Debian machines
+`format.sh`: Run `clang-format` on the codebase
+`run.sh`: Quickly run `make` and the program
