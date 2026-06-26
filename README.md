@@ -11,7 +11,6 @@ This is a simple joke fetcher for `https://jokeapi.dev/` written in `C`.
 
 Run `apt-deps.sh` to install `cjson` and `libcurl`.
 
-
 ### Fedora
 
 Install required dependencies (`cjson` and `libcurl`):
@@ -34,7 +33,7 @@ run `./joke-fetcher` to run the project.
 
 ### Options
 
-#### Joke category
+#### Joke Categories
 
 There are 7 joke categories:
 
@@ -50,4 +49,4 @@ There are 7 joke categories:
 
 Decide if you want to get offensive jokes (off by default).
 
-[!WARNING] The API has some crazy offensive jokes. You have been warned.
+> [!WARNING] The API has some crazy offensive jokes. You have been warned.
