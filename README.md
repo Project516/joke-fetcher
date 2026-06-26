@@ -1,8 +1,9 @@
-# joke-fetcher
+# Joke Fetcher
 
 This is a simple joke fetcher for `https://jokeapi.dev/` written in `C`.
 
 **Offensive jokes are off by default, but we cannot verify the API's filter is 100% accurate!**
+> See more info in the [options](#offensive)
 
 ## Setup 
 
@@ -48,3 +49,5 @@ There are 7 joke categories:
 #### Offensive
 
 Decide if you want to get offensive jokes (off by default).
+
+[!WARNING] The API has some crazy offensive jokes. You have been warned.

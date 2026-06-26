@@ -31,14 +31,16 @@ int main(void)
         goto cleanup;
     }
 
+    // blacklist option
     const char *blacklist = "?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
     offensive = isOffensive();
     if (offensive == 0) {
+        // build url to pass to curl
         snprintf(url, sizeof(url), "%s%s%s", base, category, blacklist);
     } else {
         snprintf(url, sizeof(url), "%s%s", base, category);
     }
-    
+
     curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
