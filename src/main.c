@@ -1,7 +1,6 @@
 #include <curl/curl.h>
 #include "parse.h"
 #include "utils.h"
-#include "category.h"
 
 int main(void)
 {
