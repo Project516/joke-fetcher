@@ -1,5 +1,9 @@
 # joke-fetcher
 
+This is a simple joke fetcher for `https://jokeapi.dev/` written in `C`.
+
+**Offensive jokes are off by default, but we cannot verify the API's filter is 100% accurate!**
+
 ## Setup 
 
 ### Debian
@@ -26,3 +30,21 @@ Run `make` to build the project.
 ## Usage
 
 run `./joke-fetcher` to run the project.
+
+### Options
+
+#### Joke category
+
+There are 7 joke categories:
+
+* Any
+* Programming
+* Misc
+* Dark
+* Pun
+* Spooky
+* Christmas
+
+#### Offensive
+
+Decide if you want to get offensive jokes (off by default).

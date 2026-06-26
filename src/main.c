@@ -5,7 +5,8 @@
 
 int main(void)
 {
-    printf("WARNING: JOKES MAY BE OFFENSIVE (SORRY)\n\n");
+    // turn off offensive jokes by default
+    int offensive = 0;
     
     char *joke = NULL;
     int ret = 1;
@@ -23,14 +24,21 @@ int main(void)
     }
 
     // url
-    char url[256];
+    char url[512];
     const char *base = "https://v2.jokeapi.dev/joke/";
     const char *category = return_category();
     if (category == NULL) {
         goto cleanup;
     }
-    snprintf(url, sizeof(url), "%s%s", base, category);
 
+    const char *blacklist = "?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
+    offensive = isOffensive();
+    if (offensive == 0) {
+        snprintf(url, sizeof(url), "%s%s%s", base, category, blacklist);
+    } else {
+        snprintf(url, sizeof(url), "%s%s", base, category);
+    }
+    
     curl_easy_setopt(curl, CURLOPT_URL, url);
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);

@@ -11,5 +11,6 @@ struct MemoryChunk {
 };
 
 size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
+int isOffensive();
 
 #endif
