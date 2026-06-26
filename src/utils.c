@@ -77,3 +77,6 @@ char *return_category(void) {
 
   return result;
 }
+
+// print program version
+void printVersion() { printf("joke-fetcher 1.0.0\n"); }

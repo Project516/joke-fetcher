@@ -3,6 +3,8 @@
 #include <curl/curl.h>
 
 int main(void) {
+
+  printVersion();
   // turn off offensive jokes by default
   int offensive = 0;
 

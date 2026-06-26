@@ -49,10 +49,12 @@ There are 7 joke categories:
 
 Decide if you want to get offensive jokes (off by default).
 
-> [!WARNING] The API has some crazy offensive jokes. You have been warned.
+> **The API has some crazy offensive jokes. You have been warned.**
 
 
 ## Development
+
+We use `gcc` to compile this program. Clang may work, but it has not been tested, and the `Makefile` calls for `gcc`. Make sure to have `gcc` installed.
 
 ### Scripts
 
@@ -61,3 +63,5 @@ There are shell scripts included in the repository to speed up development.
 `apt-deps.sh`: Quick setup on Debian machines
 `format.sh`: Run `clang-format` on the codebase
 `run.sh`: Quickly run `make` and the program
+
+#### You can use `apt-deps.sh` on Codespaces for an easy setup!
