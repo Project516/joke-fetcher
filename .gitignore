@@ -1,1 +1,34 @@
+# Build output
 joke-fetcher
+*.o
+*.obj
+*.exe
+
+# Debug symbols
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Dependencies
+*.d
+
+# Shared library artifacts (if ever added)
+*.so
+*.dylib
+*.dll
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.code-workspace
+
+# clang-format backup
+*.orig
