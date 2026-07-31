@@ -1,0 +1,31 @@
+# Style configuration for joke-fetcher.
+# The existing code already follows the LLVM style, so this file adopts LLVM as
+# the base and pins the options that shape the look of this project. With this in
+# place, running `./format.sh` produces consistent output across clang-format
+# versions and contributors rather than relying on whatever default the locally
+# installed version happens to ship with.
+---
+BasedOnStyle: LLVM
+
+Language: Cpp
+
+# Indentation and linewidth
+IndentWidth: 2
+UseTab: Never
+ColumnLimit: 80
+
+# Braces and parentheses
+BreakBeforeBraces: Attach
+SpaceBeforeParens: ControlStatements
+AlignAfterOpenBracket: Align
+PointerAlignment: Right
+
+# Short forms (matching the current code)
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortBlocksOnASingleLine: Empty
+IndentCaseLabels: false
+
+# Leave include grouping as written by hand
+IncludeBlocks: Preserve
+SortIncludes: Never
