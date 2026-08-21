@@ -13,11 +13,7 @@ Run `apt-deps.sh` to install `cjson` and `libcurl`.
 
 ### Fedora
 
-Install required dependencies (`cjson` and `libcurl`):
-
-```
-sudo dnf install cjson cjson-devel libcurl libcurl-devel
-```
+Run `dnf-deps.sh` to install `cjson` and `libcurl`.
 
 Run `make` to build the project. 
 
@@ -29,7 +25,29 @@ Run `make` to build the project.
 
 ## Usage
 
-run `./joke-fetcher` to run the project.
+Run `./joke-fetcher` to run the project.
+
+Without arguments, the program runs in interactive mode and prompts for a category and offensive flag.
+
+### Command-line options
+
+```
+joke-fetcher [OPTIONS]
+
+  -c, --category <name>  Joke category (any, programming, misc,
+                         dark, pun, spooky, christmas)
+  -o, --offensive        Include offensive jokes
+  -h, --help             Show help message
+  -v, --version          Show version
+```
+
+Examples:
+
+```
+./joke-fetcher -c programming
+./joke-fetcher --category pun --offensive
+./joke-fetcher -c dark -o
+```
 
 ### Options
 
@@ -61,6 +79,7 @@ We use `gcc` to compile this program. Clang may work, but it has not been tested
 There are shell scripts included in the repository to speed up development.
 
 `apt-deps.sh`: Quick setup on Debian machines
+`dnf-deps.sh`: Quick setup on Fedora machines
 `format.sh`: Run `clang-format` on the codebase
 `run.sh`: Quickly run `make` and the program
 

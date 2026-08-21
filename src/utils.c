@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <strings.h>
 
 size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata) {
   size_t real_size = size * nmemb;
@@ -80,3 +81,44 @@ char *return_category(void) {
 
 // print program version
 void printVersion() { printf("joke-fetcher 1.0.0\n"); }
+
+// print usage information
+void printHelp() {
+  printVersion();
+  printf("\nUsage: joke-fetcher [OPTIONS]\n\n");
+  printf("Fetch a random joke from jokeapi.dev.\n\n");
+  printf("If no options are given, the program runs in interactive mode.\n\n");
+  printf("Options:\n");
+  printf("  -c, --category <name>  Joke category (any, programming, misc,\n");
+  printf("                         dark, pun, spooky, christmas)\n");
+  printf("  -o, --offensive        Include offensive jokes\n");
+  printf("  -h, --help             Show this help message\n");
+  printf("  -v, --version          Show version\n");
+}
+
+// convert a category string argument to the API category name
+char *return_category_arg(const char *arg) {
+  if (arg == NULL) {
+    return NULL;
+  }
+
+  if (strcasecmp(arg, "any") == 0) {
+    return "Any";
+  } else if (strcasecmp(arg, "programming") == 0) {
+    return "Programming";
+  } else if (strcasecmp(arg, "misc") == 0 || strcasecmp(arg, "miscellaneous") == 0) {
+    return "Miscellaneous";
+  } else if (strcasecmp(arg, "dark") == 0) {
+    return "Dark";
+  } else if (strcasecmp(arg, "pun") == 0) {
+    return "Pun";
+  } else if (strcasecmp(arg, "spooky") == 0) {
+    return "Spooky";
+  } else if (strcasecmp(arg, "christmas") == 0) {
+    return "Christmas";
+  } else {
+    fprintf(stderr, "Unknown category: %s\n", arg);
+    fprintf(stderr, "Valid categories: any, programming, misc, dark, pun, spooky, christmas\n");
+    return NULL;
+  }
+}
