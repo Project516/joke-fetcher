@@ -23,6 +23,7 @@ int isOffensive() {
   int input = 0;
   printf(
       "Do you want to get offensive jokes?\n0 -> no (default)\n1 -> yes\n> ");
+  fflush(stdout);
   if (scanf("%d", &input) != 1) {
     printf("Invalid input!\n");
     return 0;
@@ -42,6 +43,7 @@ char *return_category(void) {
   char *result = NULL;
   printf("Select a joke category:\n1 -> Any (default)\n2 -> Programming\n3 -> "
          "Misc\n4 -> Dark\n5 -> Pun\n6 -> Spooky\n7 -> Christmas\n> ");
+  fflush(stdout);
   if (scanf("%d", &input) != 1) {
     printf("Invalid input!\n");
     return NULL;
