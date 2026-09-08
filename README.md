@@ -29,7 +29,7 @@ Run `make` to build the project.
 
 ## Usage
 
-run `./joke-fetcher` to run the project.
+run `./joke-fetcher` to run the project (interactive prompts for category and offensive filter).
 
 ### Options
 
