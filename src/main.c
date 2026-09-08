@@ -1,12 +1,32 @@
 #include "parse.h"
 #include "utils.h"
 #include <curl/curl.h>
+#include <string.h>
 
-int main(void) {
+int main(int argc, char *argv[]) {
 
   printVersion();
-  // turn off offensive jokes by default
+
+  // default values
   int offensive = 0;
+  const char *category = "Any";
+
+  // parse command line arguments
+  for (int i = 1; i < argc; i++) {
+    if (strcmp(argv[i], "--offensive") == 0) {
+      offensive = 1;
+    } else if (strcmp(argv[i], "--category") == 0 && i + 1 < argc) {
+      category = argv[++i];
+    } else if (strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0) {
+      printf("Usage: %s [OPTIONS]\n\n", argv[0]);
+      printf("Options:\n");
+      printf("  --offensive        Enable offensive jokes (off by default)\n");
+      printf("  --category CATEGORY  Set joke category (default: Any)\n");
+      printf("                     Categories: Any, Programming, Misc, Dark, Pun, Spooky, Christmas\n");
+      printf("  -h, --help         Show this help message\n");
+      return 0;
+    }
+  }
 
   char *joke = NULL;
   int ret = 1;
@@ -25,17 +45,10 @@ int main(void) {
   // url
   char url[512];
   const char *base = "https://v2.jokeapi.dev/joke/";
-  const char *category = return_category();
-  if (category == NULL) {
-    goto cleanup;
-  }
-
-  // blacklist option
   const char *blacklist =
       "?blacklistFlags=nsfw,religious,political,racist,sexist,explicit";
-  offensive = isOffensive();
+
   if (offensive == 0) {
-    // build url to pass to curl
     snprintf(url, sizeof(url), "%s%s%s", base, category, blacklist);
   } else {
     snprintf(url, sizeof(url), "%s%s", base, category);
